@@ -10,10 +10,21 @@
     </head>
     <body class="p-3 mb-2 bg-light text-black">
     <div class="container justify-content-center w-50 p-3" style="margin-top: 5em;">
-        <div class="alert alert-danger fill-parent">
-            <h1 class="display-5">404!</h1>
-            <span>This page doesn't exist.</span>
-            <span>Go <a href="/home">home</a>.</span>
+        <div th:if="${result == 'success'}" class="alert alert-success fill-parent">
+            <h1 class="display-5">Success</h1>
+            <span>Your changes were successfully saved. Click <a href="/home" id="aResultSuccess">here</a> to continue.</span>
+            <meta http-equiv="refresh" content="2; URL=/home" />
+        </div>
+        <div th:if="${result == 'notSaved'}" class="alert alert-danger fill-parent">
+            <h1 class="display-5">Error</h1>
+            <span>Your changes were not saved. Click <a>here</a> to continue.</span>
+            <meta http-equiv="refresh" content="2; URL=/home" />
+        </div>
+        <div th:if="${result == 'error'}" class="alert alert-danger fill-parent">
+            <h1 class="display-5">Error</h1>
+            <span th:text="${message}">Example Error Message</span>
+            <span>Click <a href="/home" id="aResultFailure">here</a> to continue.</span>
+            <meta http-equiv="refresh" content="2; URL=/home" />
         </div>
     </div>
     </body>

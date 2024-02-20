@@ -95,9 +95,4 @@ public class HomeController {
         model.addAttribute("result", "success");
         return "result";
     }
-
-    @PostMapping("/logout")
-    public String logout(){
-        return "login";
-    }
 }

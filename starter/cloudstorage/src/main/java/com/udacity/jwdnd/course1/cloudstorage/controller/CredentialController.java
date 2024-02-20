@@ -52,6 +52,7 @@ public class CredentialController {
         } else {
             credentialService.createCredential(credential, user);
         }
+        model.addAttribute("credentials", credentialService.getCredentials(user));
         model.addAttribute("result", "success");
         return "result";
     }
@@ -63,8 +64,8 @@ public class CredentialController {
                                    Model model) {
         credentialService.deleteCredential(credentialId);
         String loggedInUserName = (String) authentication.getPrincipal();
-//        User user = userMapper.getUserByName(loggedInUserName);
-//        model.addAttribute("credentials", credentialService.getCredentials(user));
+        User user = userMapper.getUserByName(loggedInUserName);
+        model.addAttribute("credentials", credentialService.getCredentials(user));
         model.addAttribute("result", "success");
         return "result";
     }
